@@ -1,0 +1,42 @@
+# 개인·비공개 작업 공간 (커밋·공유 금지)
+# 디렉토리 유지를 위한 .gitkeep만 추적하고, 이후 추가되는 파일은 모두 무시한다.
+/.private/*
+!/.private/.gitkeep
+
+# 환경 변수·시크릿
+.env
+.env.*
+!.env.example
+
+# 의존성
+node_modules/
+vendor/
+
+# 빌드 산출물
+dist/
+build/
+out/
+target/
+.next/
+.nuxt/
+*.class
+
+# 캐시
+.cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 로그
+*.log
+npm-debug.log*
