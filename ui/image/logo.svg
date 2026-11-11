@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="28" viewBox="0 0 128 28" role="img" aria-label="board-study">
+  <rect x="1" y="1" width="26" height="26" rx="6" fill="#2563eb"/>
+  <text x="14" y="19" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">B</text>
+  <text x="34" y="20" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#111827">board-study</text>
+</svg>
