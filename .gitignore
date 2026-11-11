@@ -3,10 +3,10 @@
 /.private/*
 !/.private/.gitkeep
 
-# 환경 변수·시크릿
-.env
+# 환경 변수
+# 기본 설정(.env)은 git으로 관리하고,
+# 환경별·로컬 커스텀(.env.local, .env.production 등)은 git에서 제외한다.
 .env.*
-!.env.example
 
 # 의존성
 node_modules/
