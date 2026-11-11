@@ -9,6 +9,38 @@
 단순 TODO 앱이 아닌, 실제 서비스에 가까운 게시판 도메인을 기준으로
 여러 기술들을 단계적으로 갈아 끼우며 비교/학습한다.
 
+## 로컬 개발 환경
+
+학습에 필요한 DB는 Docker Compose로 구성한다. 상세 구성·연결·운영은 `docs/common/database.md`를 참조한다.
+
+### 사전 요구사항
+- Docker Desktop (또는 Docker Engine + Compose v2)
+
+### 기동
+
+```bash
+cd docker
+docker compose up -d
+```
+
+### 구성
+
+| 서비스 | 컨테이너 | 포트 | DB | 앱 계정 |
+| --- | --- | --- | --- | --- |
+| PostgreSQL 16 | `postgres` | `5432` | `board` | `board_app` / `app1234` |
+| MongoDB 7 | `mongo` | `27017` | `board` | `board_app` / `app1234` |
+
+### 중지·초기화
+
+```bash
+cd docker
+docker compose stop      # 중지 (데이터 유지)
+docker compose down      # 컨테이너 제거 (볼륨 유지)
+docker compose down -v   # 볼륨까지 제거 (완전 초기화)
+```
+
+> 프레임워크 실습 시 위 앱 계정으로 바로 연결한다. 상세 연결 URL은 `docs/common/database.md` 참조.
+
 ## 컨벤션
 
 ### 워크스페이스 규칙
@@ -80,10 +112,16 @@ board-study/
 ├── .agent/                  # AI 보조원 전용 지시 문서
 │   └── AGENT.md             # AI의 역할·권한·작업 절차 (사람용 아님)
 ├── .private/                # 개인 작업 공간 (커밋·공유 금지, AI 접근 금지)
+├── docker/                  # 공통 인프라 (Docker Compose)
+│   ├── compose.yml          # PostgreSQL / MongoDB 정의
+│   ├── .env                 # 기본 설정 (git 관리)
+│   ├── postgres/init/       # PostgreSQL 초기화 스크립트
+│   └── mongo/init/          # MongoDB 초기화 스크립트
 ├── docs/                    # 문서 루트
 │   └── common/              # 모든 스택이 공유하는 공통 문서
 │       ├── requirements.md  # 요구사항 (비즈니스 관점)
-│       └── features.md      # 구현 기능 목록 (체크리스트)
+│       ├── features.md      # 구현 기능 목록 (체크리스트)
+│       └── database.md      # 학습용 DB 구성·연결 정보
 └── README.md                # 프로젝트 최상위 안내
 ```
 
@@ -93,8 +131,10 @@ board-study/
 | `README_<stack-name>.md` | 특정 스택 시도의 개요와 진입점 (root에 위치) |
 | `.agent/AGENT.md` | AI 보조원 전용 규칙. 사람이 직접 읽을 필요는 없다 |
 | `.private/` | 개인·비공개 작업 공간. 커밋/공유 금지이며 AI도 접근하지 않는다 |
+| `docker/` | 학습용 DB 등 공통 인프라 (Docker Compose) |
 | `docs/common/requirements.md` | 모든 스택이 참조하는 요구사항 |
 | `docs/common/features.md` | 모든 스택이 참조하는 구현 기능 목록 |
+| `docs/common/database.md` | 학습용 DB 구성·연결 정보·운영 명령 |
 | `docs/common/` (그 외) | 공통 ERD·API 명세·스키마 등 |
 
 ## 기본 절차
