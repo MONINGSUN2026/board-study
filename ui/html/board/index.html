@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>게시글 목록 · board-study</title>
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <header class="site-header">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="shrink-0"><img src="../../image/logo.svg" alt="board-study" class="h-8"></a>
+      <button type="button" data-nav-toggle class="hidden mobile:block text-gray-700" aria-controls="site-nav" aria-expanded="false">메뉴</button>
+      <nav id="site-nav" data-nav-menu class="site-header__nav flex items-center gap-4">
+        <a href="index.html" class="font-semibold text-blue-600">게시판</a>
+        <a href="post-write.html" class="text-gray-700 hover:text-blue-600">글쓰기</a>
+        <a href="../auth/login.html" class="text-gray-700 hover:text-blue-600">로그인</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-6 flex-1">
+
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-2xl font-bold text-gray-900">게시판</h1>
+      <a href="post-write.html" class="rounded bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">글쓰기</a>
+    </div>
+
+    <!-- 필터 바 -->
+    <div class="flex flex-wrap gap-2 mb-4">
+      <select class="rounded border border-gray-300 bg-white px-3 py-2 text-sm">
+        <option>전체 카테고리</option>
+        <option>공지</option>
+        <option>자유</option>
+        <option>질문</option>
+      </select>
+      <select class="rounded border border-gray-300 bg-white px-3 py-2 text-sm">
+        <option>전체 태그</option>
+        <option>java</option>
+        <option>web</option>
+      </select>
+      <select class="rounded border border-gray-300 bg-white px-3 py-2 text-sm">
+        <option>최신순</option>
+        <option>조회순</option>
+        <option>추천순</option>
+      </select>
+      <input type="search" placeholder="검색어" class="rounded border border-gray-300 bg-white px-3 py-2 text-sm">
+      <button type="button" class="rounded border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50">검색</button>
+    </div>
+
+    <!-- 게시글 목록 -->
+    <div class="overflow-x-auto rounded border border-gray-200 bg-white">
+      <table class="w-full text-sm table-fixed">
+        <colgroup>
+          <col class="w-14">
+          <col>
+          <col class="w-28">
+          <col class="w-20">
+          <col class="w-28">
+        </colgroup>
+        <thead class="bg-gray-50 text-gray-500">
+          <tr>
+            <th class="px-3 py-3 font-medium text-center">No</th>
+            <th class="px-3 py-3 font-medium text-left">제목</th>
+            <th class="px-3 py-3 font-medium text-center">작성자</th>
+            <th class="px-3 py-3 font-medium text-center">조회</th>
+            <th class="px-3 py-3 font-medium text-center">작성일</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr class="hover:bg-gray-50">
+            <td class="px-3 py-3 text-center text-gray-500">10</td>
+            <td class="px-3 py-3"><a href="post-detail.html" class="block truncate text-gray-900 hover:text-blue-600">Spring Boot로 게시판 만들기</a></td>
+            <td class="px-3 py-3 text-center">user1</td>
+            <td class="px-3 py-3 text-center text-gray-500">12</td>
+            <td class="px-3 py-3 text-center text-gray-500">2026-11-11</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-3 py-3 text-center text-gray-500">9</td>
+            <td class="px-3 py-3"><a href="post-detail.html" class="block truncate text-gray-900 hover:text-blue-600">JPA 선호도와 학습 방법</a></td>
+            <td class="px-3 py-3 text-center">user2</td>
+            <td class="px-3 py-3 text-center text-gray-500">34</td>
+            <td class="px-3 py-3 text-center text-gray-500">2026-11-10</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="px-3 py-3 text-center text-gray-500">8</td>
+            <td class="px-3 py-3"><a href="post-detail.html" class="block truncate text-gray-900 hover:text-blue-600">MongoDB와 PostgreSQL 비교</a></td>
+            <td class="px-3 py-3 text-center">user3</td>
+            <td class="px-3 py-3 text-center text-gray-500">56</td>
+            <td class="px-3 py-3 text-center text-gray-500">2026-11-09</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 페이지네이션 -->
+    <nav class="flex items-center justify-center gap-1 my-6" aria-label="페이지네이션">
+      <a href="#" class="rounded border border-gray-300 px-3 py-1 text-sm text-gray-600 hover:bg-gray-50">◀</a>
+      <a href="#" class="rounded bg-blue-600 px-3 py-1 text-sm font-semibold text-white">1</a>
+      <a href="#" class="rounded border border-gray-300 px-3 py-1 text-sm text-gray-600 hover:bg-gray-50">2</a>
+      <a href="#" class="rounded border border-gray-300 px-3 py-1 text-sm text-gray-600 hover:bg-gray-50">3</a>
+      <a href="#" class="rounded border border-gray-300 px-3 py-1 text-sm text-gray-600 hover:bg-gray-50">▶</a>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="max-w-6xl mx-auto px-4 py-4 text-sm text-gray-500">© 2026 board-study</div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

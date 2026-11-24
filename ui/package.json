@@ -1,0 +1,17 @@
+{
+  "name": "board-study-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "board-study 퍼블리싱 (SCSS + Tailwind CSS)",
+  "scripts": {
+    "build": "npm run build:css",
+    "build:css": "sass css/main.scss css/main.css --no-source-map && postcss css/main.css -o css/main.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.83.0",
+    "tailwindcss": "^3.4.17"
+  }
+}

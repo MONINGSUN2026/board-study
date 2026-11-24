@@ -21,6 +21,9 @@ target/
 .nuxt/
 *.class
 
+# UI 퍼블리싱 컴파일 결과 (소스는 .scss)
+ui/css/*.css
+
 # 캐시
 .cache/
 .pytest_cache/
